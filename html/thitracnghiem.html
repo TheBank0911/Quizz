@@ -1,0 +1,55 @@
+<section>
+    <div class="container my-5" id="content" style="background-color: white; padding: 50px; border-radius: 10px;">
+        <div class="row {{(Questions==null) ? 'show':'hide'}}">
+            <div class="col text-center ">
+                <button class="btn btn-primary " ng-click="start()">Bắt đầu bài kiểm tra</button>
+            </div>
+        </div>
+        <div class="{{(Questions==null) ? 'hide': 'show'}} ">
+            <div class="row ">
+                <div class="col text-center ">
+                    <h2><i class="fa fa-clock-o" style="color: #23B5E1; "></i>{{(time-time%60)/60}}:{{time%60}}</h2>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="panel panel-default ">
+                    <div class="panel-heading ">
+                        <img src="{{ 'images/logos/'+subject.Logo}} " width="30 " class="border border-primary rounded-lg " alt=" ">
+                        <span style="font-size: 20px; font-weight: bold; ">{{subject.Name}}</span>
+                        <span class="badge badge-dark ">{{indexquestion+1}}/10</span>
+                    </div>
+                    <div class="panel-body">
+                        <p class=" " style="font-weight: bold; ">{{indexquestion+1+'.'+Questions[indexquestion].Text}}
+                            <hr>
+                            <div ng-repeat="an in answers">
+                                <div class="form-check ">
+                                    <input ng-disabled="expression[indexquestion].count==0" class="form-check-input" ng-model="expression[indexquestion].answer " name="bgroup " type="radio" id="{{an.Id}} " value="{{an.Id}} " required>
+                                    <label class="form-check-label " for="{{an.Id}} ">{{an.Text}}</label>
+                                    </label>
+                                </div>
+                            </div>
+
+                        </p>
+                    </div>
+                    <div class="panel-footer ">
+                        <button ng-click="moveQuestion(indexquestion-1) " ng-disabled="indexquestion==0 " class="btn btn-primary ">Prev</button>
+                        <button ng-disabled="expression[indexquestion].count==0" ng-click="checkAnswer();expression[indexquestion].count=0" class="btn btn-primary ">Submit</button>
+                        <button ng-click="moveQuestion(indexquestion+1) " ng-disabled="indexquestion==9 " class="btn btn-primary ">Next</button>
+                    </div>
+
+                </div>
+                <h3 class="" style="padding: 10px; font-size: large; font-weight: 400; text-align: center;">Điểm: {{mark}}/10
+                </h3>
+
+            </div>
+
+            <button class="btn" ng-click="finish()" style="padding: 10px; font-size: large;height: px; border-radius: 10px;color: white; background-color: red;">
+                    Kết thúc bài kiểm tra</button>
+        </div>
+    </div>
+</section>
+<style>
+    .panel-body {
+        height: 260px;
+    }
+</style>

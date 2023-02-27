@@ -1,0 +1,281 @@
+<style>
+    p {
+        color: grey
+    }
+    
+    .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #heading {
+        text-transform: uppercase;
+        color: #3e46de;
+        font-weight: normal
+    }
+    
+    #msform {
+        text-align: center;
+        position: relative;
+        margin-top: 20px
+    }
+    
+    #msform fieldset {
+        background: white;
+        border: 0 none;
+        border-radius: 0.5rem;
+        box-sizing: border-box;
+        width: 100%;
+        margin: 0;
+        padding-bottom: 20px;
+        position: relative
+    }
+    
+    .form-card {
+        text-align: left
+    }
+    
+    #msform fieldset:not(:first-of-type) {
+        display: none
+    }
+    
+    #msform input,
+    #msform textarea {
+        padding: 8px 15px 8px 15px;
+        border: 1px solid #ccc;
+        border-radius: 0px;
+        margin-bottom: 25px;
+        margin-top: 2px;
+        width: 100%;
+        box-sizing: border-box;
+        font-family: montserrat;
+        color: #2C3E50;
+        background-color: #ECEFF1;
+        font-size: 16px;
+        letter-spacing: 1px
+    }
+    
+    #msform input:focus,
+    #msform textarea:focus {
+        -moz-box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        border: 1px solid #3e46de;
+        outline-width: 0
+    }
+    
+    #msform .action-button {
+        width: 100px;
+        background: #3e46de;
+        font-weight: bold;
+        color: white;
+        border: 0 none;
+        border-radius: 0px;
+        cursor: pointer;
+        padding: 10px 5px;
+        margin: 10px 0px 10px 5px;
+        float: right
+    }
+    
+    #msform .action-button:hover,
+    #msform .action-button:focus {
+        background-color: #311B92
+    }
+    
+    #msform .action-button-previous {
+        width: 100px;
+        background: #616161;
+        font-weight: bold;
+        color: white;
+        border: 0 none;
+        border-radius: 0px;
+        cursor: pointer;
+        padding: 10px 5px;
+        margin: 10px 5px 10px 0px;
+        float: right
+    }
+    
+    #msform .action-button-previous:hover,
+    #msform .action-button-previous:focus {
+        background-color: #000000
+    }
+    
+    .card {
+        z-index: 0;
+        border: none;
+        position: relative
+    }
+    
+    .fs-title {
+        font-size: 25px;
+        color: #3e46de;
+        margin-bottom: 15px;
+        font-weight: normal;
+        text-align: left
+    }
+    
+    .purple-text {
+        color: #3e46de;
+        font-weight: normal
+    }
+    
+    .steps {
+        font-size: 25px;
+        color: gray;
+        margin-bottom: 10px;
+        font-weight: normal;
+        text-align: right
+    }
+    
+    .fieldlabels {
+        color: gray;
+        text-align: left
+    }
+    
+    #progressbar {
+        margin-bottom: 30px;
+        overflow: hidden;
+        color: lightgrey
+    }
+    
+    #progressbar .active {
+        color: #3e46de
+    }
+    
+    #progressbar li {
+        list-style-type: none;
+        font-size: 15px;
+        width: 25%;
+        float: left;
+        position: relative;
+        font-weight: 400
+    }
+    
+    #progressbar li:before {
+        width: 50px;
+        height: 50px;
+        line-height: 45px;
+        display: block;
+        font-size: 20px;
+        color: #ffffff;
+        background: lightgray;
+        border-radius: 50%;
+        margin: 0 auto 10px auto;
+        padding: 2px
+    }
+    
+    #progressbar li:after {
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: lightgray;
+        position: absolute;
+        left: 0;
+        top: 25px;
+        z-index: -1
+    }
+    
+    #progressbar li.active:before,
+    #progressbar li.active:after {
+        background: #3e46de
+    }
+    
+    .progress {
+        height: 20px
+    }
+    
+    .progress-bar {
+        background-color: #3e46de
+    }
+    
+    .fit-image {
+        width: 100%;
+        object-fit: cover
+    }
+</style>
+<section>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2" style="background-color: white; width: 500px; border-radius: 10px; padding: 30px;display: flex;
+            justify-content: center;
+            align-items: center;">
+                <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                    <h2 id="heading">Quên mật khẩu</h2>
+                    <form id="msform" name="forgotpass">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div> <br>
+                        <!-- fieldsets -->
+                        <fieldset>
+                            <div class="form-card">
+                                <label class="fieldlabels">Email: *</label>
+                                <input type="email" id="email" ng-model="mail" name="Email" placeholder="Nhập Email..." required/>
+                                <label ng-show="forgotpass.Email.$invalid">Email không hợp lệ</label>
+                            </div>
+                            <button ng-hide="check==1" type="button" name="submit" id="btn" ng-click="checkMail()" class="submit action-button " value="Submit">Submit</button>
+                            <button ng-hide="check==0" type="button" name="next" id="btn" class="next action-button " value="Next">Next</button>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                </div> <label class="fieldlabels">Mã xác nhận: *</label>
+                                <input id="validCode" type="text" name="fname" placeholder="Nhập mã xác nhận..." ng-model="testMXN" />
+                            </div>
+                            <button ng-hide="mxacn==0" type="button" name="next" class="next action-button " value="Next">Next</button>
+                            <button ng-hide="mxacn==1" type="button" name="submit" ng-click="checkValidCode()" class="submit action-button " value="Submit">Submit</button>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-card">
+                                <label class="fieldlabels">Mật khẩu mới: *</label>
+                                <input type="text" name="fname" ng-model="Student.password" id="password" placeholder="Nhập mật khẩu mới..." />
+                            </div>
+                            <button type="button" name="next" class="next action-button" ng-click="update()" value="Submit"><a href="#dangnhap" style="color: white; text-decoration: none;">Submit</a></button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script>
+    $(document).ready(function() {
+        var current_fs, next_fs, previous_fs;
+        var opacity;
+        var current = 1;
+        var steps = $("fieldset").length;
+        setProgressBar(current);
+        $(".next").click(function() {
+            current_fs = $(this).parent();
+            next_fs = $(this).parent().next();
+            $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+            next_fs.show();
+            current_fs.animate({
+                opacity: 0
+            }, {
+                step: function(now) {
+                    opacity = 1 - now;
+                    current_fs.css({
+                        'display': 'none',
+                        'position': 'relative'
+                    });
+                    next_fs.css({
+                        'opacity': opacity
+                    });
+                },
+                duration: 500
+            });
+            setProgressBar(++current);
+        });
+
+        function setProgressBar(curStep) {
+            var percent = parseFloat(100 / steps) * curStep;
+            percent = percent.toFixed();
+            $(".progress-bar").css("width", percent + "%")
+        }
+        $(".submit").click(function() {
+            return false;
+        })
+    });
+</script>

@@ -1,0 +1,161 @@
+<style>
+    .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 500px;
+    }
+    
+    .formbold-form-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        max-width: 700px;
+        width: 800px;
+        background: white;
+        box-sizing: border-box;
+        padding-right: 40px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        border-radius: 10px;
+    }
+    
+    .formbold-steps {
+        padding-bottom: 18px;
+        margin-bottom: 35px;
+        border-bottom: 1px solid #DDE3EC;
+    }
+    
+    .formbold-steps ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: flex;
+        gap: 40px;
+    }
+    
+    .formbold-steps li {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: #536387;
+    }
+    
+    .formbold-steps li span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #DDE3EC;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: #536387;
+    }
+    
+    .formbold-steps li.active {
+        color: #07074D;
+        ;
+    }
+    
+    .formbold-steps li.active span {
+        background: #6A64F1;
+        color: #FFFFFF;
+    }
+    
+    .formbold-input-flex {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 22px;
+    }
+    
+    .formbold-input-flex>div {
+        width: 50%;
+    }
+    
+    .formbold-form-input {
+        width: 100%;
+        padding: 13px 22px;
+        border-radius: 5px;
+        border: 1px solid #DDE3EC;
+        background: #FFFFFF;
+        font-weight: 500;
+        font-size: 16px;
+        color: #536387;
+        outline: none;
+        resize: none;
+    }
+    
+    .formbold-form-input:focus {
+        border-color: #6a64f1;
+        box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+    }
+    
+    .formbold-form-label {
+        color: #07074D;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+        display: block;
+        margin-bottom: 10px;
+    }
+    
+    .button {
+        margin-top: 20px;
+        padding: 13px;
+        background-color: red;
+        color: white;
+        border: none;
+        border-radius: 5px;
+    }
+</style>
+<section>
+    <div class="content">
+        <div class="formbold-form-wrapper">
+            <form>
+                <div class="formbold-form-step-1 active">
+                    <h2>Thông tin cá nhân</h2>
+                    <div class="formbold-input-flex">
+                        <div style="margin-right: 50px;">
+                            <label for="firstname" class="formbold-form-label"> Username </label>
+                            <input type="text" name="firstname" ng-model="Student.username" placeholder="Username" id="firstname" class="formbold-form-input" readonly/>
+                        </div>
+                        <div>
+                            <label for="lastname" class="formbold-form-label"> Mật khẩu </label>
+                            <input type="text" ng-model="Student.password" name="lastname" placeholder="Mật khẩu" id="lastname" class="formbold-form-input" />
+                        </div>
+                    </div>
+
+                    <div class="formbold-input-flex">
+                        <div style="margin-right: 50px;">
+                            <label for="dob" class="formbold-form-label"> Ngày sinh </label>
+                            <input type="date" ng-model="Student.birthday" name="dob" id="dob" value="{{Student.birthday}}" class="formbold-form-input" />
+                        </div>
+                        <div>
+                            <label for="email" class="formbold-form-label"> Email </label>
+                            <input type="email" name="email" ng-model="Student.email" placeholder="example@mail.com" id="email" class="formbold-form-input" readonly />
+                        </div>
+
+                    </div>
+                    <div class="formbold-input-flex">
+                        <div style="margin-right: 50px;">
+                            <label for="firstname" class="formbold-form-label"> Họ và tên </label>
+                            <input type="text" ng-model="Student.fullname" name="firstname" placeholder="Họ và tên" id="firstname" class="formbold-form-input" />
+                        </div>
+                        <div>
+                            <label for="email" class="formbold-form-label"> Giới tính </label>
+                            <input type="radio" id="Nam" ng-model="Student.gender" name="fav_language" value="true"> <label for="Nam">Nam</label> <input type="radio" ng-model="Student.gender" id="Nu" name="fav_language" value="false"> <label for="Nu">Nữ</label><br>
+                        </div>
+                    </div>
+
+                </div>
+                <button class="button" ng-click="update()">Cập nhật</button>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,99 @@
+<style>
+    .social-box .box {
+        background: #FFF;
+        border-radius: 10px;
+        cursor: pointer;
+        margin: 20px 0;
+        padding: 40px 10px;
+        height: 510px;
+        transition: all 0.5s ease-out;
+    }
+    
+    .banner {
+        position: relative;
+        background-image: url('../images/bg.jpg');
+        min-height: 100vh;
+        background-size: cover;
+        background-position: center;
+        padding: 100px 0 200px;
+        width: 100%;
+    }
+    
+    .social-box .box:hover {
+        box-shadow: 0 0 6px #4183D7;
+    }
+    
+    .social-box .box-text {
+        font-size: 15px;
+        line-height: 30px;
+        margin: 20px 0;
+    }
+    
+    .social-box .box-btn a {
+        color: #4183D7;
+        font-size: 16px;
+        text-decoration: none;
+    }
+    
+    .social-box .fa {
+        color: #4183D7;
+    }
+    
+    .slider__controls {
+        margin-top: 30px;
+        user-select: none;
+        text-align: center;
+    }
+    
+    .slider__control {
+        display: inline-block;
+        color: #829995;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+    
+    .slider__control--prev {
+        margin-right: 10px;
+    }
+    
+    .slider__control--next {
+        margin-left: 10px;
+    }
+    
+    .slider__pagers {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+</style>
+<section>
+    <div class="social-box">
+        <div class="container">
+            <div class="row">
+                <div ng-show="subjects.length ==0" style="text-align: center;">
+                    <h1>Không tìm thấy kết quả phù hợp</h1>
+                </div>
+                <div ng-hide="subjects.length ==0" class="col-lg-4 col-xs-12 text-center" ng-repeat="sj in subjects|limitTo: 6:begin">
+                    <div class="box">
+                        <img src="{{'images/logos/'+sj.Logo}}" alt="">
+                        <div class="box-title">
+                            <h3>{{sj.Name}}</h3>
+                        </div>
+                        <div class="box-text">
+                            <span>Các câu hỏi trắc nghiệm giúp bạn dễ dàng ghi nhớ kiến thức đã học</span>
+                        </div>
+                        <div class="box-btn">
+                            <button class="btn btn-primary" ng-click="test(sj.Id)" ng-disabled="Student==null">Bắt đầu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slider__controls">
+            <button class="slider__control js__slider__control--prev slider__control--prev" ng-click="prev()" style="color: black; font-size: 20px;"><span class="fa fa-arrow-circle-left"></span></button>
+            <button class="slider__control js__slider__control--next slider__control--next" ng-click="next()" style=" color: black; font-size: 20px; "><span class="fa fa-arrow-circle-right"></span></button>
+        </div>
+    </div>
+    </div>
+</section>

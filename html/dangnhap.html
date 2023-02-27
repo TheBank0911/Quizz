@@ -1,0 +1,174 @@
+<style>
+    #playground-container {
+        height: 500px;
+        overflow: hidden !important;
+    }
+    
+    .main {
+        margin-top: 70px;
+        -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.24);
+        -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.24);
+        box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.24);
+        padding: 0px;
+    }
+    
+    .fb:focus,
+    .fb:hover {
+        color: FFF !important;
+    }
+    
+    .left-side {
+        padding: 0px 0px 100px;
+        background: #0986fa;
+        background-size: cover;
+        height: 515px;
+        border-radius: 10px 0 0 10px;
+    }
+    
+    .left-side h1 {
+        font-size: 70px;
+        font-weight: 900;
+        color: #FFF;
+        padding: 50px 10px 00px 26px;
+    }
+    
+    .left-side p {
+        font-weight: 600;
+        color: #FFF;
+        padding: 10px 10px 10px 26px;
+    }
+    
+    .fb {
+        background: #2d6bb7;
+        color: #FFF;
+        padding: 10px 15px;
+        border-radius: 18px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-right: 15px;
+        margin-left: 26px;
+        -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.24);
+        -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.24);
+        box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.24);
+    }
+    
+    .tw {
+        background: #20c1ed;
+        color: #FFF;
+        padding: 10px 15px;
+        border-radius: 18px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-right: 15px;
+        -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.24);
+        -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.24);
+        box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.24);
+    }
+    
+    .gg {
+        background: #ed203f;
+        color: #FFF;
+        padding: 10px 15px;
+        border-radius: 18px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-right: 15px;
+        -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.24);
+        -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.24);
+        box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.24);
+    }
+    
+    .dk {
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .right-side {
+        padding: 30px 0px 100px;
+        background: #FFF;
+        background-size: cover;
+        min-height: 514px;
+        border-radius: 0 10px 10px 0;
+    }
+    
+    .right-side h1 {
+        font-size: 30px;
+        font-weight: 700;
+        color: #000;
+        padding: 50px 10px 00px 50px;
+    }
+    
+    .right-side p {
+        font-weight: 600;
+        color: #000;
+        padding: 10px 50px 10px 50px;
+    }
+    
+    .form {
+        padding: 10px 50px 10px 50px;
+    }
+    
+    .form-control {
+        box-shadow: none !important;
+        border-radius: 0px !important;
+        border-bottom: 1px solid #2b73de !important;
+        border-top: none !important;
+        border-left: none !important;
+        border-right: none !important;
+    }
+    
+    .btn-deep-purple {
+        background: #04AA6D;
+        border-radius: 18px;
+        padding: 5px 19px;
+        color: #FFF;
+        font-weight: 600;
+        float: right;
+        -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.24);
+        -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.24);
+        box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.24);
+    }
+</style>
+<section>
+    <div class="container">
+
+        <div class="col-sm-8 col-sm-offset-2 main">
+            <div class="col-sm-6 left-side">
+                <h1>Xin<br>chào.</h1>
+                <p>Chào mừng bạn đến với trang web của Quizz</p>
+                <br>
+                <p>Đăng nhập với</p>
+                <a class="fb" href="" target="_blank">Facebook</a>
+                <a class="tw" href="" target="_blank">Twitter</a>
+                <a class="gg" href="" target="_blank">Google</a>
+                <br><br><br><br>
+
+                <h4><a class="dk" href="#dangky">Bạn chưa có tài khoản ?</a></h4>
+            </div>
+            <div class="col-sm-6 right-side">
+                <h1>Đăng nhập</h1>
+                <br>
+                <div class="form">
+                    <div class="form-group">
+                        <label for="form2">Email</label>
+                        <input type="email" ng-model="Student.email" id="form2" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="form4">Mật khẩu</label>
+                        <input type="password" ng-model="Student.password" id="form4" class="form-control">
+                    </div>
+
+                    <div class="text-xs-center">
+                        <a href="#quenmatkhau">
+                            Quên mật khẩu?
+                        </a>
+                        <a ng-click="start()" target="_blank" class="btn btn-deep-purple">Đăng nhập</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,123 @@
+<style>
+    .social-box .box {
+        background: #FFF;
+        border-radius: 10px;
+        cursor: pointer;
+        margin: 40px 0;
+        padding: 40px 10px;
+        height: 510px;
+        transition: all 0.5s ease-out;
+    }
+    
+    .social-box .box:hover {
+        box-shadow: 0 0 6px #4183D7;
+    }
+    
+    .social-box .box-text {
+        font-size: 15px;
+        line-height: 30px;
+        margin: 20px 0;
+    }
+    
+    .social-box .box-btn a {
+        color: #4183D7;
+        font-size: 16px;
+        text-decoration: none;
+    }
+    
+    .social-box .fa {
+        color: #4183D7;
+    }
+    
+    .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .panel.panel--styled {
+        background: #F4F2F3;
+    }
+    
+    .panelTop {
+        padding: 30px;
+    }
+    
+    .panelBottom {
+        border-top: 1px solid #e7e7e7;
+        padding-top: 20px;
+    }
+    
+    .btn-bd {
+        background: #00c16d;
+        color: #fff;
+    }
+    
+    .btn.btn-bd.focus,
+    .btn.btn-bd:focus,
+    .btn.btn-bd:hover {
+        color: #fff;
+        background: #00c16d;
+        outline: none;
+    }
+    
+    .btn-bd:active {
+        background: #00c16d;
+        outline: none;
+    }
+    
+    .ds li {
+        font-size: 20px;
+    }
+</style>
+<section>
+    <div class="content">
+        <div class="col-md-8">
+            <div class="panel panel-default  panel--styled">
+                <div class="panel-body">
+                    <div class="col-md-12 panelTop">
+                        <div class="col-md-4">
+                            <img class="img-responsive" src="images/logo2.png" alt="" />
+                        </div>
+                        <div class="col-md-8">
+                            <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 30px; font-weight: bold;">Chào mừng bạn đến với Quizz</h2>
+                            <ul class="ds">
+                                <li>Các kiến thức cơ bản đến nâng cao</li>
+                                <li>Học các kiến thức mới</li>
+                                <li>Ghi nhớ kiến thức với các bài tập trắc nghiệm</li>
+                                <li>Được học miễn phí với nội dung chất lượng</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 panelBottom">
+                        <div class="text-center">
+                            <button ng-show="Student==null" class="btn btn-lg btn-bd"><a href="#dangnhap" style="color: white;text-decoration: none;">Bắt đầu</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="social-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-xs-12 text-center" ng-repeat="sj in Subjects |limitTo: 6:begin">
+                    <div class="box">
+                        <img src="{{'images/logos/'+sj.Logo}}" alt="">
+                        <div class="box-title">
+                            <h3>{{sj.Name}}</h3>
+                        </div>
+                        <div class="box-text">
+                            <span>Các câu hỏi trắc nghiệm giúp bạn dễ dàng ghi nhớ kiến thức đã học</span>
+                        </div>
+                        <div class="box-btn">
+                            <button class="btn btn-primary" ng-click="test(sj.Id)" ng-disabled="Student==null">Bắt đầu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>

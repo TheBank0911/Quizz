@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quizz</title>
+    <link href="css/index.css" rel="stylesheet" />
+    <script src="js/jquery.min.js"></script>
+    <link rel="icon" href="images/logo2.png" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link
+      href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+  </head>
+
+  <body ng-app="myApp">
+    <nav
+      class="navbar navbar-inverse justy"
+      style="margin-bottom: 0"
+      ng-show="time==0"
+    >
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#alignment-example"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" style="padding-top: 8px" href="#"
+            ><img src="images/flower (1).png" width="35px" alt=""
+          /></a>
+        </div>
+        <div class="collapse navbar-collapse" id="alignment-example">
+          <ul class="nav navbar-nav">
+            <li><a href="#trangchu">Trang chủ </a></li>
+            <li><a href="#gioithieu">Giới thiệu</a></li>
+            <li class="dropdown">
+              <a
+                href=""
+                class="dropdown-toggle"
+                data-toggle="dropdown"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >Môn học <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="about-us">
+                <li>
+                  <a href="#monhoc">Tất cả</a>
+                </li>
+                <li ng-repeat="sj in Subjects">
+                  <a ng-click="test(sj.Id)">
+                    <img
+                      src="{{'images/logos/'+sj.Logo}}"
+                      class="img-fluid rounded-circle hoverable"
+                      style="height: 20px"
+                      alt=""
+                    />
+                    {{sj.Name}}
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li><a href="#hotro">Hỗ trợ</a></li>
+            <li class="dropdown">
+              <a
+                href=""
+                class="dropdown-toggle"
+                data-toggle="dropdown"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >{{(Student==null)?'Tài khoản ':Student.fullname}}<span
+                  class="caret"
+                ></span>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="about-us">
+                <ul ng-show="Student==null">
+                  <li style="padding: 10px 0 10px 0">
+                    <a class="dropdown-item" href="#dangky">Đăng ký</a>
+                  </li>
+                  <li style="padding: 10px 0 10px 0">
+                    <a class="dropdown-item" href="#dangnhap">Đăng nhập</a>
+                  </li>
+                  <li style="padding: 10px 0 10px 0">
+                    <a
+                      class="dropdown-item"
+                      href="#quenmatkhau"
+                      ng-click="forgotPassWord()"
+                      >Quên mật khẩu</a
+                    >
+                  </li>
+                </ul>
+                <ul ng-hide="Student==null">
+                  <li style="padding: 10px 0 10px 0">
+                    <a class="dropdown-item" href="#thongtin"
+                      >Thông tin cá nhân</a
+                    >
+                  </li>
+                  <li style="padding: 10px 0 10px 0">
+                    <a class="dropdown-item" href="" ng-click="logout()"
+                      >Đăng xuất</a
+                    >
+                  </li>
+                </ul>
+              </ul>
+            </li>
+          </ul>
+          <form class="navbar-form navbar-right" role="search">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                ng-model="search"
+                placeholder="Tìm kiếm"
+                ng-change="Search()"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <main class="banner">
+      <div ng-view></div>
+    </main>
+    <footer>
+      <div class="row text-center">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <ul class="list-inline">
+            <li>
+              <a href="https://www.facebook.com/davisy.dev?mibextid=ZbWKwL"
+                ><i class="fa fa-facebook fa-2x"></i
+              ></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-dropbox fa-2x"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-flickr fa-2x"></i></a>
+            </li>
+            <li>
+              <a href="https://github.com/TheBank0911"
+                ><i class="fa fa-github fa-2x"></i
+              ></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-linkedin fa-2x"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-tumblr fa-2x"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-google-plus fa-2x"></i></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <ul class="menu list-inline">
+            <li>
+              <a href="#">Home</a>
+            </li>
+            <li>
+              <a href="#">About</a>
+            </li>
+            <li>
+              <a href="#">Blog</a>
+            </li>
+            <li>
+              <a href="#">Gallery </a>
+            </li>
+            <li>
+              <a href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <div class="copyright">
+      <div class="container">
+        <div class="row text-center">
+          <p>FPT Polytechnic © 2023</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="myapp/myapp.js"></script>
+    <script src="myapp/monhoc.js"></script>
+    <script src="myapp/dangky.js"></script>
+    <script src="myapp/suadoitaikhoan.js"></script>
+    <script src="myapp/dangnhap.js"></script>
+    <script>
+      app.controller("hotroCtrl", function ($scope, $rootScope, $http) {});
+    </script>
+    <script src="myapp/gioithieu.js">
+    </script>
+    <script src="myapp/quenmatkhau.js"></script>
+    <script src="myapp/thitracnghiem.js"></script>
+    <script src="myapp/trangchu.js"></script>
+    <script src="myapp/thongtin.js"></script>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
+      const firebaseConfig = {
+        apiKey: "AIzaSyAYHmDIEpSpv-EMdlmj1uCBsM_3clwWZa8",
+        authDomain: "quizz-6d010.firebaseapp.com",
+        databaseURL: "https://quizz-6d010-default-rtdb.firebaseio.com",
+        projectId: "quizz-6d010",
+        storageBucket: "quizz-6d010.appspot.com",
+        messagingSenderId: "629543629632",
+        appId: "1:629543629632:web:992e1dea02c2479ce140a5",
+        measurementId: "G-ZM8PZNS56N",
+      };
+
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+
+      //===================
+
+
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
+  </body>
+</html>
